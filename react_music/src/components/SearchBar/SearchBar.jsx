@@ -42,14 +42,45 @@ export default class SearchBar extends Component {
         this.state.album === this.props.songs[song].album
       ) {
         this.filteredSongs.push(songs[song]);
-      }
+      } 
+
     }
-    this.props.updateMusicTable(this.filteredSongs);
+    if (this.filteredSongs.length > 0){
+      this.props.updateMusicTable(this.filteredSongs);
+    } else { 
+      alert('No songs were found matching that citeria')
+    }
   };
+
+  handleSelect = (event) => { 
+    event.preventDefault();
+
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+
+    let songs = this.props.songs;
+
+    for (let song in songs) {
+      if (
+        this.state.genre !== "" &&
+        this.state.genre === this.props.songs[song].genre
+      ) {
+        this.filteredSongs.push(songs[song]);
+      }  }
+    }
+    if (this.filteredSongs.length > 0) {
+      this.props.updateMusicTable(this.filteredSongs);
+    } else {
+      alert("No songs were found matching that citeria");
+    }
+  };
+
 
   render() {
     return (
       <div>
+        <h3>Search Library</h3>
         <form onSubmit={(event) => this.handleSubmit(event)}>
           <label>Song Title</label>
           <input
@@ -58,6 +89,26 @@ export default class SearchBar extends Component {
             onChange={this.handleChange}
             value={this.state.title}
           />
+          <label>Artist</label>
+          <input
+            type="text"
+            name="artist"
+            onChange={this.handleChange}
+            value={this.state.artist}
+          />
+          <label>Album Title</label>
+          <input
+            type="text"
+            name="album"
+            onChange={this.handleChange}
+            value={this.state.album}
+          />
+          <label>Genre</label>
+          <input type="select" name='genre' onChange={this.handleSelect}> 
+            <option value='rock'>Rock</option>
+            <option value='jazz'>Jazz</option>
+            <option value='international'>International</option> 
+          </input>
           <button type="submit">Search</button>
         </form>
       </div>

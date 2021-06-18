@@ -28,6 +28,7 @@ export default class CreateEntry extends Component {
   render() {
     return (
       <div>
+        <h3>Add Entry to the Library</h3>
         <form onSubmit={(event) => this.handleSubmit(event)}>
           <label>Song Title</label>
           <input

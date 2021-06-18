@@ -42,14 +42,14 @@ export class App extends Component {
     return (
       <div id="main-body">
         <h1> Music Library</h1>
-        <SearchBar
-          songs={this.state.songs}
-          updateMusicTable={this.updateMusicTable}
-        />
+        <div className= 'search-container'>
+          <SearchBar
+            songs={this.state.songs}
+            updateMusicTable={this.updateMusicTable}
+          />
+        </div>
         <MusicTable songs={this.state.songs} deleteSong={this.deleteSong} />
-        <CreateEntry
-          createNewSong={this.createNewSong}
-        />
+        <CreateEntry createNewSong={this.createNewSong} />
       </div>
     );
   }
