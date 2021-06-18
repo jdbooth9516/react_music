@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button } from "reactstrap";
+import "./CreateEntry.css"
 
 
 export default class CreateEntry extends Component {
@@ -28,7 +29,7 @@ export default class CreateEntry extends Component {
 
   render() {
     return (
-      <div>
+      <div id='create-bar'>
         <h3>Add Entry to the Library</h3>
         <form onSubmit={(event) => this.handleSubmit(event)}>
           <label>Song Title</label>
@@ -73,7 +74,7 @@ export default class CreateEntry extends Component {
             onChange={this.handleChange}
             value={this.state.likes}
           />
-          <Button type="submit" outline color="info">
+          <Button  id="create-btn" type="submit" color="info">
             Create Entry
           </Button>
         </form>

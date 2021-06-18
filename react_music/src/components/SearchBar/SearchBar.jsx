@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Button } from "reactstrap"
+import { Button } from "reactstrap";
+import "./SearchBar.css"
 
 export default class SearchBar extends Component {
   constructor(props) {
@@ -69,7 +70,7 @@ export default class SearchBar extends Component {
 
   render() {
     return (
-      <div>
+      <div id='search-bar'>
         <h3>Search Library</h3>
         <form onSubmit={(event) => this.handleSubmit(event)}>
           <label>Song Title</label>
@@ -95,7 +96,7 @@ export default class SearchBar extends Component {
           />
           <label>Release Date</label>
           <input
-            type="text"
+            type="date"
             name="release_date"
             onChange={this.handleChange}
             value={this.state.release_date}
@@ -107,7 +108,7 @@ export default class SearchBar extends Component {
             <option value="jazz">Jazz</option>
             <option value="international">International</option>
           </select>
-          <Button type="submit" outline color="success">
+          <Button  id="search-btn" type="submit"  color="success">
             Search
           </Button>
         </form>

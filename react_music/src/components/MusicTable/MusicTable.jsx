@@ -27,7 +27,7 @@ export default function MusicTable(props) {
             <td>{song.genre}</td>
             <td>{song.release_date}</td>
             <td>{song.likes}</td>
-            <td><Button color="danger" onClick={() => {props.deleteSong(song.id)}}>Del Song</Button></td>
+            <td><Button id="delete-btn" color="danger" onClick={() => {props.deleteSong(song.id)}}>Del Song</Button></td>
           </tr>
         ))}
       </tbody>

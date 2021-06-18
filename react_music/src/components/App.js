@@ -4,6 +4,7 @@ import axios from "axios";
 import MusicTable from "./MusicTable/MusicTable";
 import CreateEntry from "./CreateEntry/CreateEntry";
 import SearchBar from "./SearchBar/SearchBar"
+import { Navbar, Button} from "reactstrap"
 
 export class App extends Component {
   state = {
@@ -24,12 +25,12 @@ export class App extends Component {
 
   async deleteSong(song){
      let response = await axios.delete(`http://127.0.0.1:8000/detail/${song}`); 
-      window.location.reload();
+      this.getAllSongs();
   }
 
   async createNewSong(song) { 
     let response = await axios.post("http://127.0.0.1:8000/music/", song);
-    window.location.reload();
+     this.getAllSongs();
   }
 
   updateMusicTable = (newSongs)  => { 
@@ -38,18 +39,29 @@ export class App extends Component {
    });
   }
 
+
+
   render() {
     return (
       <div id="main-body">
-        <h1> Music Library</h1>
-        <div className= 'search-container'>
+        <Navbar color="dark" dark expand="md">
+          <div>
+          <h1> Music Library</h1>
+          </div>
+          <div>
+            <Button id="home-btn" onClick={this.getAllSongs.bind(this)} color="info">
+              Home
+            </Button>
+          </div>
+        </Navbar>
+        <div className="search-container">
           <SearchBar
             songs={this.state.songs}
             updateMusicTable={this.updateMusicTable}
           />
         </div>
-        <MusicTable songs={this.state.songs} deleteSong={this.deleteSong} />
-        <CreateEntry createNewSong={this.createNewSong} />
+        <MusicTable songs={this.state.songs} deleteSong={this.deleteSong.bind(this)} />
+        <CreateEntry createNewSong={this.createNewSong.bind(this)} />
       </div>
     );
   }

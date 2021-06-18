@@ -1,0 +1,14 @@
+#create-bar {
+  color: black;
+  background-color: rgb(174, 187, 199);
+  max-width: 90vw;
+  margin: 2vh 3vw;
+  border-radius: 5px;
+  text-align: center;
+  justify-content: center;
+}
+
+#create-btn {
+    margin: 1vh 1vw;
+    background: radial-gradient(rgba(60, 202, 221, 0.411) 10%, rgb(1, 201, 236));
+}
