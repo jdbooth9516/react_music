@@ -32,19 +32,24 @@ export class App extends Component {
     window.location.reload();
   }
 
-  updateMusicTable(newSongs) { 
-    this.setState ({
-      songs: newSongs
-    })
+  updateMusicTable = (newSongs)  => { 
+   this.setState ({
+      songs: newSongs,
+   });
   }
 
   render() {
     return (
-      <div id='main-body'>
+      <div id="main-body">
         <h1> Music Library</h1>
-        <SearchBar songs={this.state.songs}/> 
-        <MusicTable songs={this.state.songs} deleteSong={this.deleteSong}/>
-        <CreateEntry createNewSong={this.createNewSong} updateMusicTable={this.updateMusicTable}/>
+        <SearchBar
+          songs={this.state.songs}
+          updateMusicTable={this.updateMusicTable}
+        />
+        <MusicTable songs={this.state.songs} deleteSong={this.deleteSong} />
+        <CreateEntry
+          createNewSong={this.createNewSong}
+        />
       </div>
     );
   }

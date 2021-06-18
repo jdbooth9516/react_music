@@ -10,7 +10,6 @@ export default class SearchBar extends Component {
       release_date: "",
       likes: 0,
     };
-    this.songs = this.props.songs; //need to pass this in a props
 
     // flitered songs go here.
     this.filteredSongs = [];
@@ -25,21 +24,33 @@ export default class SearchBar extends Component {
   handleSubmit = (event) => {
     //add verification at some point
     event.preventDefault();
-    let searchCriteria = event.target.name;
-    let serchValue = event.target.value;
+    let songs = this.props.songs;
 
-    for (let song in this.songs) {
-      if (serchValue === song.searchCriteria.value) {
-        this.filteredSongs.push(song);
+    for (let song in songs) {
+      if (
+        this.state.title !== "" &&
+        this.state.title === this.props.songs[song].title
+      ) {
+        this.filteredSongs.push(songs[song]);
+      } else if (
+        this.state.artist !== "" &&
+        this.state.artist === this.props.songs[song].artist
+      ) {
+        this.filteredSongs.push(songs[song]);
+      } else if (
+        this.state.album !== "" &&
+        this.state.album === this.props.songs[song].album
+      ) {
+        this.filteredSongs.push(songs[song]);
       }
     }
-    this.props.updateMusicTable(filteredSongs)
+    this.props.updateMusicTable(this.filteredSongs);
   };
 
   render() {
     return (
       <div>
-        <form onSumbit={(event) => this.handleSubmit(event)}>
+        <form onSubmit={(event) => this.handleSubmit(event)}>
           <label>Song Title</label>
           <input
             type="text"
