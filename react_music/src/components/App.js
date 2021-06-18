@@ -2,15 +2,13 @@ import "./App.css";
 import React, { Component } from "react";
 import axios from "axios";
 import MusicTable from "./MusicTable/MusicTable";
+import CreateEntry from "./CreateEntry/CreateEntry";
 
 export class App extends Component {
   state = {
     songs: [],
   };
 
-  refresh = () => {
-    this.setState({});
-  };
 
   componentDidMount() {
     this.getAllSongs();
@@ -28,11 +26,17 @@ export class App extends Component {
       window.location.reload();
   }
 
+  async createNewSong(song) { 
+    let response = await axios.post("http://127.0.0.1:8000/music/", song);
+    window.location.reload();
+  }
+
   render() {
     return (
       <div id='main-body'>
         <h1> Music Library</h1>
         <MusicTable songs={this.state.songs} deleteSong={this.deleteSong}/>
+        <CreateEntry createNewSong={this.createNewSong}/>
       </div>
     );
   }
