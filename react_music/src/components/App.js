@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import MusicTable from "./MusicTable/MusicTable";
 import CreateEntry from "./CreateEntry/CreateEntry";
+import SearchBar from "./SearchBar/SearchBar"
 
 export class App extends Component {
   state = {
@@ -31,12 +32,19 @@ export class App extends Component {
     window.location.reload();
   }
 
+  updateMusicTable(newSongs) { 
+    this.setState ({
+      songs: newSongs
+    })
+  }
+
   render() {
     return (
       <div id='main-body'>
         <h1> Music Library</h1>
+        <SearchBar songs={this.state.songs}/> 
         <MusicTable songs={this.state.songs} deleteSong={this.deleteSong}/>
-        <CreateEntry createNewSong={this.createNewSong}/>
+        <CreateEntry createNewSong={this.createNewSong} updateMusicTable={this.updateMusicTable}/>
       </div>
     );
   }
