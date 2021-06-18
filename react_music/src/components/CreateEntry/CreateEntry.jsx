@@ -9,6 +9,7 @@ export default class CreateEntry extends Component {
       title: "",
       artist: "",
       album: "",
+      genre: "",
       release_date: "",
       likes: 0,
     };
@@ -50,6 +51,13 @@ export default class CreateEntry extends Component {
             name="album"
             onChange={this.handleChange}
             value={this.state.album}
+          />
+          <label>Genre</label>
+          <input
+            type="text"
+            name="genre"
+            onChange={this.handleChange}
+            value={this.state.genre}
           />
           <label>Release Date</label>
           <input

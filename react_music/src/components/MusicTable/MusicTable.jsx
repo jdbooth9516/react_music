@@ -12,6 +12,7 @@ export default function MusicTable(props) {
           <th>Song Title</th>
           <th>Artist</th>
           <th>Album</th>
+          <th>Genre</th>
           <th>Release Date</th>
           <th>Likes</th>
         </tr>
@@ -23,6 +24,7 @@ export default function MusicTable(props) {
             <td>{song.title}</td>
             <td>{song.artist}</td>
             <td>{song.album}</td>
+            <td>{song.genre}</td>
             <td>{song.release_date}</td>
             <td>{song.likes}</td>
             <td><Button color="danger" onClick={() => {props.deleteSong(song.id)}}>Del Song</Button></td>
