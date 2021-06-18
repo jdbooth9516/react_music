@@ -1,4 +1,5 @@
 import React from "react";
+import UpdateEntry from '../UpdateEntry/UpdateEntry'
 import { Jumbotron, Table, Button } from "reactstrap";
 import './MusicTable.css'
 
@@ -27,6 +28,7 @@ export default function MusicTable(props) {
             <td>{song.genre}</td>
             <td>{song.release_date}</td>
             <td>{song.likes}</td>
+             <td><Button id="edit-btn" color="info" onClick={() => {UpdateEntry(song.id)}}>Edit Info</Button></td>
             <td><Button id="delete-btn" color="danger" onClick={() => {props.deleteSong(song.id)}}>Del Song</Button></td>
           </tr>
         ))}

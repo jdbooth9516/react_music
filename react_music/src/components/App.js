@@ -33,6 +33,10 @@ export class App extends Component {
      this.getAllSongs();
   }
 
+  async updateSong(Id, song){
+    let response = await axios.put(`http://127.0.0.1:8000/detail/${Id}`, song);
+  }
+
   updateMusicTable = (newSongs)  => { 
    this.setState ({
       songs: newSongs,
