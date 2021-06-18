@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button } from "reactstrap"
 
 export default class SearchBar extends Component {
   constructor(props) {
@@ -9,6 +10,7 @@ export default class SearchBar extends Component {
       album: "",
       release_date: "",
       likes: 0,
+      genre: '',
     };
 
     // flitered songs go here.
@@ -42,39 +44,27 @@ export default class SearchBar extends Component {
         this.state.album === this.props.songs[song].album
       ) {
         this.filteredSongs.push(songs[song]);
+      } else if (
+        this.state.release_date !== "" &&
+        this.state.release_date === this.props.songs[song].release_date
+      ) {
+        this.filteredSongs.push(songs[song]);
+      } else if (
+        this.state.genre !== "" &&
+        this.state.genre === this.props.songs[song].genre
+      ) {
+        this.filteredSongs.push(songs[song]);
       } 
 
     }
     if (this.filteredSongs.length > 0){
       this.props.updateMusicTable(this.filteredSongs);
+      this.filteredSongs = []
     } else { 
       alert('No songs were found matching that citeria')
     }
   };
 
-  handleSelect = (event) => { 
-    event.preventDefault();
-
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-
-    let songs = this.props.songs;
-
-    for (let song in songs) {
-      if (
-        this.state.genre !== "" &&
-        this.state.genre === this.props.songs[song].genre
-      ) {
-        this.filteredSongs.push(songs[song]);
-      }  }
-    }
-    if (this.filteredSongs.length > 0) {
-      this.props.updateMusicTable(this.filteredSongs);
-    } else {
-      alert("No songs were found matching that citeria");
-    }
-  };
 
 
   render() {
@@ -103,13 +93,23 @@ export default class SearchBar extends Component {
             onChange={this.handleChange}
             value={this.state.album}
           />
+          <label>Release Date</label>
+          <input
+            type="text"
+            name="release_date"
+            onChange={this.handleChange}
+            value={this.state.release_date}
+          />
           <label>Genre</label>
-          <input type="select" name='genre' onChange={this.handleSelect}> 
-            <option value='rock'>Rock</option>
-            <option value='jazz'>Jazz</option>
-            <option value='international'>International</option> 
-          </input>
-          <button type="submit">Search</button>
+          <select name="genre" onChange={this.handleChange}>
+            <option value="">None</option>
+            <option value="rock">Rock</option>
+            <option value="jazz">Jazz</option>
+            <option value="international">International</option>
+          </select>
+          <Button type="submit" outline color="success">
+            Search
+          </Button>
         </form>
       </div>
     );
