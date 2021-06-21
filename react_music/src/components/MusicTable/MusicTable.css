@@ -1,11 +1,22 @@
+th { 
+    font-size: 0.9em;
+}
+
+td { 
+    font-size: 0.9em;
+    max-height: 1.5em;
+}
+
 #jumbo { 
     background-color: aliceblue;
     max-width: 90vw;
     margin-left: 3vw;
     padding: 5px;
     border-radius: 5px;
+    
 }
 
 #edit-btn  {
     background: radial-gradient(rgba(31, 229, 255, 0.726) 10%, rgb(0, 172, 252));
 }
+

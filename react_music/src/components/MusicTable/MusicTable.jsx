@@ -5,7 +5,7 @@ import './MusicTable.css'
 export default function MusicTable(props) {
   return (
     <Jumbotron id="jumbo">
-      <Table striped>
+      <Table striped responsive>
         <thead>
           <tr>
             <th>Id #</th>
@@ -33,7 +33,7 @@ export default function MusicTable(props) {
                   color="info"
                   onClick={() => {props.makeVisible(); props.selectedSong(song.id)}}
                 >
-                  Edit Info
+                  Edit
                 </Button>
               </td>
               <td>
@@ -44,7 +44,7 @@ export default function MusicTable(props) {
                     props.deleteSong(song.id);
                   }}
                 >
-                  Del Song
+                  Del
                 </Button>
               </td>
             </tr>

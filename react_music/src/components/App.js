@@ -1,4 +1,3 @@
-import "./App.css";
 import React, { Component } from "react";
 import axios from "axios";
 import MusicTable from "./MusicTable/MusicTable";
@@ -7,6 +6,7 @@ import SearchBar from "./SearchBar/SearchBar"
 import { Navbar, Button} from "reactstrap"
 import UpdateEntry from "./UpdateEntry/UpdateEntry";
 import ShowModal from "./Modal/Modal";
+import "./App.css";
 
 
 export class App extends Component {

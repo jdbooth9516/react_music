@@ -1,8 +1,12 @@
+label { 
+  margin: 0.5vh .3vw;
+}
+
 #create-bar {
   color: black;
   background-color: rgb(174, 187, 199);
-  max-width: 90vw;
-  margin: 2vh 3vw;
+  max-width: 30vw;
+  margin: 2vh 3vw 2vh 30vw;
   border-radius: 5px;
   text-align: center;
   justify-content: center;
