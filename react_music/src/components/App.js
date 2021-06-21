@@ -6,12 +6,16 @@ import CreateEntry from "./CreateEntry/CreateEntry";
 import SearchBar from "./SearchBar/SearchBar"
 import { Navbar, Button} from "reactstrap"
 import UpdateEntry from "./UpdateEntry/UpdateEntry";
+import ShowModal from "./Modal/Modal";
+
 
 export class App extends Component {
   state = {
     updateVisible: false,
     visible: true,
+    modalOpen: false,
     selectedSong: 0,
+    song: {},
     songs: [],
   };
 
@@ -61,6 +65,13 @@ export class App extends Component {
     })
   }
 
+  openModal = (song) => { 
+    this.setState({
+      modalOpen: !this.state.modalOpen,
+      song: song
+    });
+  }
+
   render() {
     return (
       <div id="main-body">
@@ -95,9 +106,14 @@ export class App extends Component {
         ) : null}
         {this.state.updateVisible ? (
           <UpdateEntry
+            songs={this.state.songs}
             selectedSong={this.state.selectedSong}
             updateSong={this.updateSong.bind(this)}
+            modalOpen={this.openModal.bind(this)}
           />
+        ) : null}
+        {this.state.modalOpen ? (
+          <ShowModal open={this.state.modalOpen} song={this.state.song}/>
         ) : null}
       </div>
     );

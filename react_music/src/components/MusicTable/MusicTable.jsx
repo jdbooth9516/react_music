@@ -1,8 +1,6 @@
 import React from "react";
-import UpdateEntry from '../UpdateEntry/UpdateEntry'
 import { Jumbotron, Table, Button } from "reactstrap";
 import './MusicTable.css'
-import App from "../App"
 
 export default function MusicTable(props) {
   return (

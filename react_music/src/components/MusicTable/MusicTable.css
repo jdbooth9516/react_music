@@ -5,3 +5,7 @@
     padding: 5px;
     border-radius: 5px;
 }
+
+#edit-btn  {
+    background: radial-gradient(rgba(31, 229, 255, 0.726) 10%, rgb(0, 172, 252));
+}
