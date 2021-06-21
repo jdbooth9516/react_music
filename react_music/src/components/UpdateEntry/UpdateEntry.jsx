@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ModalBody, Modal, ModalHeader, ModalFooter } from "reactstrap";
+import { ModalBody, Modal, ModalHeader, ModalFooter, Button, Form} from "reactstrap";
 import App from '../App'
 
 export default class UpdateEntry extends Component {
@@ -12,9 +12,11 @@ export default class UpdateEntry extends Component {
       genre: "",
       release_date: "",
       likes: 0,
+      visible: false
     };
-    this.songId = props
-  }
+    this.songId = props.selectedSong
+  };
+
 
   handleChange = (event) => {
     this.setState({
@@ -24,15 +26,12 @@ export default class UpdateEntry extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    App.updateSong(this.songId, this.state);
+    this.props.updateSong(this.songId, this.state);
   };
 
   render() {
     return (
-      <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle}>Update Song Info</ModalHeader>
-        <ModalBody>
-          <From onSubmit={(event) => this.handleSubmit(event)}>
+          <Form onSubmit={(event) => this.handleSubmit(event)}>
             <label>Song Title</label>
             <input
               type="text"
@@ -78,9 +77,7 @@ export default class UpdateEntry extends Component {
             <Button id="create-btn" type="submit" color="info">
               Create Entry
             </Button>
-          </From>
-        </ModalBody>
-      </Modal>
+          </Form>
     );
   }
 }
