@@ -25,25 +25,41 @@ export class App extends Component {
 
 
   async getAllSongs() {
-    let response = await axios.get("http://127.0.0.1:8000/music/");
-    this.setState({
-      songs: response.data,
-    });
-  }
+    try {
+      let response = await axios.get("http://127.0.0.1:8000/music/");
+      this.setState({
+        songs: response.data,
+      });
+    } catch (error){
+      console.error(error);
+    }
+}
 
   async deleteSong(song) {
-    let response = await axios.delete(`http://127.0.0.1:8000/detail/${song}`);
-    this.getAllSongs();
+    try{
+      let response = await axios.delete(`http://127.0.0.1:8000/detail/${song}`);
+      this.getAllSongs();
+    }catch (error) { 
+      console.error(error);
+    }
   }
 
   async createNewSong(song) {
-    let response = await axios.post("http://127.0.0.1:8000/music/", song);
-    this.getAllSongs();
+    try {  
+      let response = await axios.post("http://127.0.0.1:8000/music/", song);
+      this.getAllSongs();
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   async updateSong(Id, song) {
-    let response = await axios.put(`http://127.0.0.1:8000/detail/${Id}`, song);
-    this.getAllSongs();
+    try {  
+      let response = await axios.put(`http://127.0.0.1:8000/detail/${Id}`, song);
+      this.getAllSongs();
+  } catch (error) {
+      console.error(error);
+    }
   }
 
   updateMusicTable = (newSongs) => {
